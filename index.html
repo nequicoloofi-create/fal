@@ -632,22 +632,274 @@
 
     @media(max-width:700px){
       .top-container{
-        flex-wrap:wrap;
-        gap:14px;
+        flex-wrap:nowrap;
+        gap:0;
+        padding:10px 0;
       }
+
+      .logo-box{
+        width:52px;
+        height:52px;
+      }
+
+      .brand-text p{
+        font-size:11px;
+      }
+
+      .brand-text h2{
+        font-size:18px;
+      }
+
+      /* En móvil solo mostrar ícono de usuario y menú hamburguesa en header-right */
       .header-right{
-        flex-wrap:wrap;
-        gap:12px;
+        gap:10px;
       }
-      .footer-top{
+
+      .lang-flag,
+      .help-link,
+      .phone-area{
+        display:none;
+      }
+
+      /* Mostrar botón hamburguesa + avatar como en la captura */
+      .header-mobile-actions{
+        display:flex;
+        align-items:center;
+        gap:10px;
+      }
+
+      .mobile-avatar{
+        width:38px;
+        height:38px;
+        border-radius:50%;
+        background:#1a3c8f;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+
+      .mobile-avatar svg{
+        fill:#fff;
+      }
+
+      .mobile-menu-btn{
+        width:38px;
+        height:38px;
+        border:1.5px solid #ccc;
+        border-radius:8px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:#fff;
+        cursor:pointer;
+      }
+
+      /* Nav: scroll horizontal en móvil */
+      .nav-container{
+        width:100%;
+        padding:8px 16px;
+        gap:20px;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+      }
+
+      .nav-container::-webkit-scrollbar{
+        display:none;
+      }
+
+      .nav-item{
+        white-space:nowrap;
+        font-size:13px;
+        flex-shrink:0;
+      }
+
+      /* Main: sin grid en móvil, columna única */
+      .main-section{
+        width:100%;
+        margin:24px 0;
         grid-template-columns:1fr;
+        gap:0;
+        padding:0 16px;
       }
-      .brands-section h2{
-        font-size:30px;
+
+      /* Ocultar banner en móvil (no aparece en la captura) */
+      .banner-wrap{
+        display:none;
       }
+
+      .payment-box h1{
+        font-size:32px;
+        margin-bottom:8px;
+      }
+
+      .payment-box > p{
+        font-size:14px;
+        margin-bottom:20px;
+      }
+
+      .form-group input{
+        font-size:14px;
+        padding:12px 14px;
+      }
+
+      /* Captcha y botón: en móvil el captcha ocupa todo el ancho y el botón debajo */
       .captcha-row{
         flex-direction:column;
-        align-items:flex-start;
+        align-items:stretch;
+        gap:12px;
+        margin-bottom:16px;
+      }
+
+      .captcha-box{
+        min-width:unset;
+        width:100%;
+      }
+
+      .consultar-btn{
+        width:100%;
+        padding:14px;
+        font-size:15px;
+        border-radius:8px;
+        background:#2979d4;
+      }
+
+      /* Payment methods box */
+      .payment-methods{
+        padding:20px 16px 14px;
+        border-radius:10px;
+        margin-top:20px;
+      }
+
+      .payment-methods h3{
+        font-size:18px;
+        margin-bottom:16px;
+      }
+
+      .cards{
+        gap:8px;
+      }
+
+      .card-logo{
+        min-width:60px;
+        height:36px;
+      }
+
+      .card-logo img{
+        max-height:28px;
+        max-width:80px;
+      }
+
+      /* Footer móvil: acordeón */
+      .footer-top{
+        grid-template-columns:1fr;
+        gap:0;
+        padding-bottom:0;
+        border-bottom:none;
+      }
+
+      /* Social section siempre visible arriba */
+      .social-section{
+        padding:30px 0 20px;
+        border-bottom:1px solid rgba(255,255,255,.15);
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+      }
+
+      .footer-logo-wrap{
+        margin-bottom:16px;
+      }
+
+      .social-icons{
+        justify-content:center;
+        margin-bottom:16px;
+      }
+
+      /* Footer columns: acordeón */
+      .footer-column{
+        border-bottom:1px solid rgba(255,255,255,.15);
+      }
+
+      .footer-column h4{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:16px 0;
+        margin-bottom:0;
+        font-size:15px;
+        cursor:pointer;
+      }
+
+      .footer-column h4::after{
+        content:'';
+        display:inline-block;
+        width:10px;
+        height:10px;
+        border-right:2px solid #fff;
+        border-bottom:2px solid #fff;
+        transform:rotate(45deg);
+        transition:transform .25s;
+        flex-shrink:0;
+        margin-right:4px;
+      }
+
+      .footer-column.open h4::after{
+        transform:rotate(-135deg);
+      }
+
+      .footer-column ul{
+        max-height:0;
+        overflow:hidden;
+        transition:max-height .3s ease;
+        padding-bottom:0;
+      }
+
+      .footer-column.open ul{
+        max-height:600px;
+        padding-bottom:16px;
+      }
+
+      .footer-column ul li{
+        font-size:13px;
+        margin-bottom:8px;
+      }
+
+      /* Brands */
+      .brands-section{
+        padding:30px 0 30px;
+      }
+
+      .brands-section h2{
+        font-size:28px;
+        margin-bottom:24px;
+        text-align:center;
+      }
+
+      .brands{
+        gap:24px;
+        justify-content:center;
+      }
+
+      .brand-img-wrap img{
+        max-height:36px;
+        max-width:110px;
+      }
+
+      .footer-bottom{
+        font-size:12px;
+        padding:24px 0 40px;
+        line-height:1.8;
+      }
+
+      .cuotas-note{
+        font-size:11px;
+        text-align:left;
+      }
+
+      .bottom-text{
+        text-align:left;
       }
     }
   </style>
@@ -692,6 +944,20 @@
             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
           </svg>
           Para reservar &nbsp;<strong>601 742 3890</strong>
+        </div>
+
+        <!-- Botones móvil: avatar + hamburguesa -->
+        <div class="header-mobile-actions">
+          <div class="mobile-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <div class="mobile-menu-btn">
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round">
+              <line x1="0" y1="1" x2="18" y2="1"/>
+              <line x1="0" y1="7" x2="18" y2="7"/>
+              <line x1="0" y1="13" x2="18" y2="13"/>
+            </svg>
+          </div>
         </div>
 
       </div>
@@ -894,7 +1160,7 @@
 
         <!-- Columna 2: Aerolíneas -->
         <div class="footer-column">
-          <h4>Aerolíneas Destacadas</h4>
+          <h4 onclick="toggleAccordion(this)">Aerolíneas Destacadas</h4>
           <ul>
             <li>Avianca</li>
             <li>Copa Airlines</li>
@@ -919,7 +1185,7 @@
 
         <!-- Columna 3: Los más vistos -->
         <div class="footer-column">
-          <h4>Los más Vistos</h4>
+          <h4 onclick="toggleAccordion(this)">Los más Vistos</h4>
           <ul>
             <li>Tiquetes Bogotá</li>
             <li>Boletos Aéreos</li>
@@ -934,7 +1200,7 @@
 
         <!-- Columna 4: Sobre nosotros -->
         <div class="footer-column">
-          <h4>Sobre tiquetesbaratos.com</h4>
+          <h4 onclick="toggleAccordion(this)">Sobre tiquetesbaratos.com</h4>
           <ul>
             <li>Quiénes Somos</li>
             <li>Términos y Condiciones</li>
@@ -954,7 +1220,7 @@
 
         <!-- Columna 5: Recursos -->
         <div class="footer-column">
-          <h4>Recursos</h4>
+          <h4 onclick="toggleAccordion(this)">Recursos</h4>
           <ul>
             <li>TiquetesBaratos | Empresas</li>
             <li>Registra tu hotel</li>
@@ -1046,6 +1312,36 @@
       }
       alert('Consultando reserva...');
     }
+
+    // Acordeón footer móvil
+    function toggleAccordion(el) {
+      if (window.innerWidth > 700) return;
+      var col = el.parentElement;
+      col.classList.toggle('open');
+    }
+
+    // Mostrar/ocultar elementos según tamaño de pantalla
+    function handleResize() {
+      var mobileActions = document.querySelector('.header-mobile-actions');
+      var langFlag = document.querySelector('.lang-flag');
+      var helpLink = document.querySelector('.help-link');
+      var phoneArea = document.querySelector('.phone-area');
+
+      if (window.innerWidth <= 700) {
+        if (mobileActions) mobileActions.style.display = 'flex';
+        if (langFlag) langFlag.style.display = 'none';
+        if (helpLink) helpLink.style.display = 'none';
+        if (phoneArea) phoneArea.style.display = 'none';
+      } else {
+        if (mobileActions) mobileActions.style.display = 'none';
+        if (langFlag) langFlag.style.display = 'flex';
+        if (helpLink) helpLink.style.display = 'block';
+        if (phoneArea) phoneArea.style.display = 'flex';
+      }
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
   </script>
 
 </body>

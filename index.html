@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TiquetesBaratos - Pago en línea</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#fff;
+      color:#222;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+      cursor:pointer;
+    }
+
+    /* ================= HEADER ================= */
+
+    .top-header{
+      width:100%;
+      border-bottom:1px solid #ddd;
+      background:#fff;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+
+    .top-container{
+      width:90%;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 0;
+    }
+
+    .logo-area{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo-box{
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+
+    .logo-box img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
+    .brand-text p{
+      font-size:13px;
+      color:#555;
+      line-height:1.2;
+    }
+
+    .brand-text h2{
+      font-size:26px;
+      font-weight:700;
+      color:#111;
+      line-height:1.1;
+    }
+
+    .brand-text h2 span.red{
+      color:#e0001b;
+    }
+
+    .brand-text h2 span.black{
+      color:#111;
+    }
+
+    .header-right{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      font-size:14px;
+    }
+
+    .lang-flag{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-weight:500;
+      cursor:pointer;
+    }
+
+    /* Colombia flag SVG inline */
+    .flag-colombia{
+      width:24px;
+      height:16px;
+      border-radius:2px;
+      overflow:hidden;
+      display:inline-block;
+      flex-shrink:0;
+    }
+
+    .help-link{
+      color:#333;
+      font-weight:400;
+      cursor:pointer;
+    }
+
+    .help-link:hover{
+      text-decoration:underline;
+    }
+
+    .phone-area{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-weight:600;
+      color:#111;
+    }
+
+    .phone-area svg{
+      flex-shrink:0;
+    }
+
+    /* ================= NAV BAR ================= */
+
+    .nav-bar{
+      width:100%;
+      border-bottom:1px solid #eee;
+      background:#fff;
+    }
+
+    .nav-container{
+      width:90%;
+      margin:auto;
+      display:flex;
+      gap:30px;
+      padding:10px 0;
+    }
+
+    .nav-item{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:14px;
+      color:#333;
+      cursor:pointer;
+      padding:4px 0;
+      border-bottom:2px solid transparent;
+      transition:.2s;
+    }
+
+    .nav-item:hover{
+      color:#5b63ff;
+      border-bottom-color:#5b63ff;
+    }
+
+    .nav-item .badge{
+      font-size:10px;
+      color:#28a745;
+      font-weight:600;
+    }
+
+    /* ================= MAIN ================= */
+
+    .main-section{
+      width:90%;
+      margin:40px auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:flex-start;
+    }
+
+    .image-wrapper{
+      width:100%;
+      height:580px;
+      border-radius:8px;
+      overflow:hidden;
+    }
+
+    .image-wrapper img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* Placeholder si no hay imagen */
+    .image-placeholder{
+      width:100%;
+      height:580px;
+      background:linear-gradient(135deg,#d7edf9,#b3d9f0);
+      border-radius:8px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#5a9fc4;
+      font-size:18px;
+      font-weight:500;
+    }
+
+    .banner-wrap{
+      width:70%;
+      height:420px;
+      object-position: left;
+      border-radius:8px;
+      overflow:hidden;
+      background:#d7edf9;
+      
+    }
+
+    .banner-wrap img{
+      width: 100% !important;
+      height: 100% !important;
+      object-fit:cover;
+      object-position:right;
+      display:block !important;
+      border-radius:8px;
+    }
+
+    .banner-fallback{
+      display:none;
+      width:100%;
+      height:100%;
+      align-items:center;
+      justify-content:center;
+      color:#5a9fc4;
+      font-size:16px;
+      font-weight:500;
+    }
+
+    .payment-box h1{
+      font-size:48px;
+      margin-bottom:10px;
+      font-weight:700;
+      color:#1d2230;
+      line-height:1.1;
+    }
+
+    .payment-box > p{
+      margin-bottom:28px;
+      color:#555;
+      line-height:1.6;
+      font-size:15px;
+    }
+
+    .form-group{
+      margin-bottom:18px;
+    }
+
+    .form-group label{
+      display:block;
+      margin-bottom:7px;
+      font-size:14px;
+      font-weight:500;
+      color:#333;
+    }
+
+    .form-group input{
+      width:100%;
+      padding:13px 14px;
+      border:1.5px solid #ccc;
+      border-radius:6px;
+      font-size:15px;
+      font-family:'Poppins',sans-serif;
+      outline:none;
+      transition:.2s;
+      color:#333;
+    }
+
+    .form-group input::placeholder{
+      color:#aaa;
+    }
+
+    .form-group input:focus{
+      border-color:#5b63ff;
+      box-shadow:0 0 0 3px rgba(91,99,255,.1);
+    }
+
+    /* ================= CAPTCHA CUSTOM ================= */
+
+    .captcha-row{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      margin-top:16px;
+      margin-bottom:22px;
+    }
+
+    .captcha-box{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      border:1.5px solid #ccc;
+      border-radius:6px;
+      padding:12px 16px;
+      background:#fafafa;
+      cursor:pointer;
+      user-select:none;
+      min-width:240px;
+      transition:.2s;
+    }
+
+    .captcha-box:hover{ border-color:#aaa; }
+
+    /* El checkbox cuadrado pequeño */
+    #captchaCheck{
+      width:24px;
+      height:24px;
+      min-width:24px;
+      border:2px solid #c1c1c1;
+      border-radius:3px;
+      background:#fff;
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:background .3s, border-color .3s;
+      box-sizing:border-box;
+    }
+
+    #captchaCheck.done{
+      background:#4CAF50 !important;
+      border-color:#4CAF50 !important;
+    }
+
+    /* El spinner de carga (círculo girando) */
+    #captchaSpinner{
+      width:24px;
+      height:24px;
+      flex-shrink:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+    }
+
+    #captchaSpinner svg{
+      animation:spin .75s linear infinite;
+    }
+
+    @keyframes spin{ to{ transform:rotate(360deg); } }
+
+    .captcha-label{
+      font-size:14px;
+      color:#333;
+      font-family:'Poppins',sans-serif;
+      flex:1;
+    }
+
+    .captcha-logo{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:1px;
+      margin-left:auto;
+    }
+
+    .captcha-logo svg{
+      width:30px;
+      height:30px;
+    }
+
+    .captcha-logo .rc-text{
+      font-size:8px;
+      color:#999;
+      white-space:nowrap;
+    }
+
+    .captcha-logo .rc-sub{
+      font-size:7px;
+      color:#bbb;
+      white-space:nowrap;
+    }
+
+    .consultar-btn{
+      background:#1a3c8f;
+      color:#fff;
+      border:none;
+      padding:13px 36px;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:600;
+      font-size:15px;
+      font-family:'Poppins',sans-serif;
+      transition:.25s;
+      white-space:nowrap;
+    }
+
+    .consultar-btn:hover{
+      background:#142e6e;
+      transform:translateY(-1px);
+      box-shadow:0 4px 14px rgba(26,60,143,.35);
+    }
+
+    .consultar-btn:active{
+      transform:translateY(0);
+    }
+
+    /* ================= PAYMENT METHODS ================= */
+
+    .payment-methods{
+      margin-top:26px;
+      border:1.5px solid #e0e0e0;
+      border-radius:14px;
+      padding:28px 28px 18px;
+    }
+
+    .payment-methods h3{
+      text-align:center;
+      margin-bottom:22px;
+      font-size:22px;
+      font-weight:600;
+      color:#1d2230;
+    }
+
+    .cards{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .card-logo{
+      height:40px;
+      padding:4px 8px;
+      background:transparent;
+      border-radius:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:none;
+      min-width:70px;
+    }
+
+    .card-logo img{
+      max-height:32px;
+      max-width:90px;
+      object-fit:contain;
+    }
+
+    .bottom-text{
+      margin-top:16px;
+      text-align:center;
+      font-size:13px;
+      color:#222;
+      cursor:pointer;
+      font-weight:500;
+    }
+
+    .bottom-text:hover{
+      text-decoration:underline;
+    }
+
+    .cuotas-note{
+      margin-top:8px;
+      font-size:12px;
+      color:#888;
+      text-align:center;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      background:#1a3c8f;
+      color:#fff;
+      margin-top:50px;
+      padding-top:50px;
+    }
+
+    .footer-container{
+      width:90%;
+      margin:auto;
+    }
+
+    .footer-top{
+      display:grid;
+      grid-template-columns:1.3fr 1fr 1fr 1.3fr 1fr;
+      gap:35px;
+      padding-bottom:40px;
+      border-bottom:1px solid rgba(255,255,255,.25);
+    }
+
+    .footer-logo-wrap{
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      background:#fff;
+      overflow:hidden;
+      margin-bottom:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:6px;
+    }
+
+    .footer-logo-wrap img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
+    .social-section p{
+      font-size:14px;
+      margin-bottom:12px;
+      color:#e8e8ff;
+    }
+
+    .social-icons{
+      display:flex;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .social-icon{
+      width:36px;
+      height:36px;
+      background:#fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:.2s;
+      flex-shrink:0;
+    }
+
+    .social-icon:hover{
+      transform:translateY(-2px);
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+    }
+
+    .footer-column h4{
+      margin-bottom:16px;
+      font-size:16px;
+      font-weight:600;
+    }
+
+    .footer-column ul{
+      list-style:none;
+    }
+
+    .footer-column ul li{
+      margin-bottom:10px;
+      font-size:13.5px;
+      color:#d8d8f0;
+      cursor:pointer;
+      transition:.15s;
+    }
+
+    .footer-column ul li:hover{
+      color:#fff;
+      text-decoration:underline;
+    }
+
+    .brands-section{
+      padding:45px 0 50px;
+      border-bottom:1px solid rgba(255,255,255,.2);
+    }
+
+    .brands-section h2{
+      font-size:42px;
+      font-weight:700;
+      margin-bottom:35px;
+      color:#fff;
+    }
+
+    .brands{
+      display:flex;
+      gap:40px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .brand-img-wrap{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .brand-img-wrap img{
+      max-height:50px;
+      max-width:140px;
+      object-fit:contain;
+      filter:brightness(0) invert(1);
+      opacity:.85;
+      transition:.2s;
+    }
+
+    .brand-img-wrap img:hover{
+      opacity:1;
+    }
+
+    /* ================= FOOTER BOTTOM ================= */
+
+    .footer-bottom{
+      text-align:center;
+      font-size:13px;
+      line-height:2;
+      padding:35px 20px 55px;
+      color:#d0d0e8;
+    }
+
+    @media(max-width:1050px){
+      .main-section{
+        grid-template-columns:1fr;
+      }
+      .footer-top{
+        grid-template-columns:1fr 1fr;
+      }
+      .payment-box h1{
+        font-size:38px;
+      }
+    }
+
+    @media(max-width:700px){
+      .top-container{
+        flex-wrap:wrap;
+        gap:14px;
+      }
+      .header-right{
+        flex-wrap:wrap;
+        gap:12px;
+      }
+      .footer-top{
+        grid-template-columns:1fr;
+      }
+      .brands-section h2{
+        font-size:30px;
+      }
+      .captcha-row{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="top-header">
+
+    <div class="top-container">
+
+      <div class="logo-area">
+        <div class="logo-box">
+          <img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/tb-color-full.svg" alt="TiquetesBaratos Logo" onerror="this.style.display='none'">
+        </div>
+        <div class="brand-text">
+          <p>Hoteles, Paquetes y</p>
+          <h2>
+            <span class="black">Tiquetes</span><span class="red">Baratos</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="header-right">
+
+        <div class="lang-flag">
+          <!-- Bandera Colombia SVG inline -->
+          <svg class="flag-colombia" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="16" fill="#FCD116"/>
+            <rect y="8" width="24" height="8" fill="#003087"/>
+            <rect y="11" width="24" height="5" fill="#CE1126"/>
+          </svg>
+          Español &ndash; COP
+        </div>
+
+        <span class="help-link">Ayuda</span>
+
+        <div class="phone-area">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
+          </svg>
+          Para reservar &nbsp;<strong>601 742 3890</strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- ================= NAV ================= -->
+
+  <nav class="nav-bar">
+    <div class="nav-container">
+
+      <!-- Vuelos: ícono avión -->
+      <a class="nav-item">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/>
+        </svg>
+        Vuelos
+        <span class="badge">+250,000</span>
+      </a>
+
+      <!-- Alojamientos: ícono cama/hotel -->
+      <a class="nav-item">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 20v-8a2 2 0 012-2h16a2 2 0 012 2v8"/>
+          <path d="M4 10V6a2 2 0 012-2h12a2 2 0 012 2v4"/>
+          <line x1="2" y1="20" x2="22" y2="20"/>
+          <rect x="7" y="14" width="4" height="4" rx="1"/>
+        </svg>
+        Alojamientos
+        <span class="badge">¡Ahorra más!</span>
+      </a>
+
+      <!-- Hotel + Vuelo: combinado avión + edificio -->
+      <a class="nav-item">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 21h22v2H1zM5 7h4v4H5zm6 0h4v4h-4zm6 0h4v4h-4zM5 13h4v4H5zm6 0h4v4h-4zm6 0h4v4h-4zM3 3h18v3H3z"/>
+        </svg>
+        Hotel + Vuelo
+      </a>
+
+      <!-- Disney: ícono Mickey (círculos oreja) -->
+      <a class="nav-item">
+        <svg width="17" height="17" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="6"/>
+          <circle cx="24" cy="8" r="6"/>
+          <ellipse cx="16" cy="21" rx="12" ry="9"/>
+        </svg>
+        Disney
+      </a>
+
+      <!-- Ofertas: ícono tag/etiqueta -->
+      <a class="nav-item">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/>
+          <line x1="7" y1="7" x2="7.01" y2="7"/>
+        </svg>
+        Ofertas
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 3l4 4 4-4z"/></svg>
+      </a>
+
+    </div>
+  </nav>
+
+  <!-- ================= MAIN ================= -->
+
+  <section class="main-section">
+
+    <!-- Imagen banner: reemplaza banner.jpg con tu imagen -->
+    <div class="banner-wrap">
+      <img src="img-pago-en-linea.jpg" alt="Banner" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="banner-fallback">Coloca aquí tu imagen (banner.jpg)</div>
+    </div>
+
+    <div class="payment-box">
+
+      <h1>Pago en línea</h1>
+
+      <p>
+        Ingrese su localizador y pague en línea.
+        (Recibimos todas las tarjetas Débito y Crédito).
+      </p>
+
+      <div class="form-group">
+        <label>Localizador</label>
+        <input type="text" placeholder="Ej. 129668555">
+      </div>
+
+      <div class="form-group">
+        <label>Email (el que usó para reservar)</label>
+        <input type="email" placeholder="Ej. ejemplo@correo.com">
+      </div>
+
+      <div class="captcha-row">
+
+        <!-- CAPTCHA personalizado animado -->
+        <div class="captcha-box" id="captchaBox" onclick="handleCaptcha()">
+
+          <!-- Checkbox cuadrado (estado inicial) -->
+          <div id="captchaCheck"></div>
+
+          <!-- Spinner circulito girando (estado cargando) -->
+          <div id="captchaSpinner">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="#e0e0e0" stroke-width="2.5"/>
+              <path d="M12 2 A10 10 0 0 1 22 12" stroke="#4A90D9" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <span class="captcha-label">No soy un robot</span>
+
+          <div class="captcha-logo">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" fill="#4A90D9"/>
+              <path d="M32 10 A22 22 0 1 1 10 32" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <polygon points="10,32 18,22 18,42" fill="#fff"/>
+            </svg>
+            <span class="rc-text">reCAPTCHA</span>
+            <span class="rc-sub">Privacidad · Términos</span>
+          </div>
+
+        </div>
+
+        <button class="consultar-btn" onclick="consultar()">Consultar</button>
+
+      </div>
+
+      <div class="payment-methods">
+
+        <h3>Pagos cómodos y seguros</h3>
+
+        <div class="cards">
+          <div class="card-logo"><img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/logo-visa.svg" alt="Visa"></div>
+          <div class="card-logo"><img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/logo-amex.svg" alt="Amex"></div>
+          <div class="card-logo"><img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/logo-mastercard.svg" alt="Mastercard"></div>
+          <div class="card-logo"><img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/logo-dinersclub.svg" alt="Diners Club"></div>
+          <div class="card-logo"><img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/logo-pse.svg" alt="PSE"></div>
+          <div class="card-logo"><img src="https://3.cdnpt.com/images/bancos/logo-bancolombia.png" alt="Bancolombia"></div>
+          <div class="card-logo"><img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/logo-efecty.svg" alt="Efecty"></div>
+          <div class="card-logo"><img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/logo-daviplata.svg" alt="Daviplata"></div>
+          <div class="card-logo"><img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/logo-nequi.svg" alt="Nequi"></div>
+        </div>
+
+        <div class="bottom-text">Consulta nuestras formas de pago &rsaquo;</div>
+        <div class="cuotas-note">*Las opciones de pagos a cuotas dependen del servicio seleccionado y el valor de la compra.</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="footer-container">
+
+      <div class="footer-top">
+
+        <!-- Columna 1: Logo y redes -->
+        <div class="social-section">
+
+          <div class="footer-logo-wrap">
+            <img src="https://d1lmbekkd3z1zs.cloudfront.net/svg/tb-color-full.svg" alt="TiquetesBaratos" onerror="this.parentElement.innerHTML='TB'">
+          </div>
+
+          <p>¡Síguenos en nuestras redes!</p>
+
+          <div class="social-icons">
+            <!-- Facebook -->
+            <div class="social-icon" title="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.413c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.971h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+            </div>
+            <!-- X/Twitter -->
+            <div class="social-icon" title="X">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#000"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.74-8.847L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <!-- YouTube -->
+            <div class="social-icon" title="YouTube">
+              <svg width="18" height="14" viewBox="0 0 24 18" fill="#FF0000"><path d="M23.495 2.205a3.02 3.02 0 00-2.127-2.148C19.463 0 12 0 12 0S4.537 0 2.632.057A3.02 3.02 0 00.505 2.205 31.247 31.247 0 000 8.747a31.247 31.247 0 00.505 6.543 3.02 3.02 0 002.127 2.148C4.537 18 12 18 12 18s7.463 0 9.368-.562a3.02 3.02 0 002.127-2.148A31.247 31.247 0 0024 8.747a31.247 31.247 0 00-.505-6.542zm-13.897 10.62V6.669l6.271 3.078z"/></svg>
+            </div>
+          </div>
+
+          <p>¡Comunícate con nosotros!</p>
+
+          <div class="social-icons">
+            <!-- Messenger -->
+            <div class="social-icon" title="Messenger">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#0084FF"><path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.975 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.131 3.26L19.752 8.1z"/></svg>
+            </div>
+            <!-- WhatsApp -->
+            <div class="social-icon" title="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm.029 18.88a9.896 9.896 0 01-4.754-1.217l-3.315.869.888-3.236A9.916 9.916 0 012.1 12.029C2.1 6.768 6.768 2.1 12.029 2.1c5.26 0 9.929 4.668 9.929 9.929 0 5.26-4.669 9.851-9.929 9.851z"/></svg>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Columna 2: Aerolíneas -->
+        <div class="footer-column">
+          <h4>Aerolíneas Destacadas</h4>
+          <ul>
+            <li>Avianca</li>
+            <li>Copa Airlines</li>
+            <li>LATAM</li>
+            <li>Iberia Airlines</li>
+            <li>Airfrance Airlines</li>
+            <li>AeroMexico Airlines</li>
+            <li>United Airlines</li>
+            <li>Continental Airlines</li>
+            <li>American Airlines</li>
+            <li>AirCanada.com</li>
+            <li>JetBlue Airways</li>
+            <li>Satena</li>
+            <li>Clic Air</li>
+            <li>Viva Aerobus</li>
+            <li>Volaris</li>
+            <li>Wingo</li>
+            <li>JetSMART</li>
+            <li>Delta Airlines</li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Los más vistos -->
+        <div class="footer-column">
+          <h4>Los más Vistos</h4>
+          <ul>
+            <li>Tiquetes Bogotá</li>
+            <li>Boletos Aéreos</li>
+            <li>Oferta Vuelos</li>
+            <li>Vuelos en Promoción</li>
+            <li>Tiquetes Nacionales</li>
+            <li>Tiquetes Oferta</li>
+            <li>Tiquetes Aéreos</li>
+            <li>Destinos</li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Sobre nosotros -->
+        <div class="footer-column">
+          <h4>Sobre tiquetesbaratos.com</h4>
+          <ul>
+            <li>Quiénes Somos</li>
+            <li>Términos y Condiciones</li>
+            <li>Acerca de Anato</li>
+            <li>Política de Privacidad</li>
+            <li>Compra Segura</li>
+            <li>Superintendencia de Industria y Comercio</li>
+            <li>Superintendencia de Transporte</li>
+            <li>Aerocivil</li>
+            <li>Contra la Pornografía Infantil</li>
+            <li>Derechos del pasajero y/o deberes del transportador</li>
+            <li>Ley Retracto y/o Desistimiento</li>
+            <li>Política de sostenibilidad</li>
+            <li>Contrato de transporte aéreo de Colombia</li>
+          </ul>
+        </div>
+
+        <!-- Columna 5: Recursos -->
+        <div class="footer-column">
+          <h4>Recursos</h4>
+          <ul>
+            <li>TiquetesBaratos | Empresas</li>
+            <li>Registra tu hotel</li>
+            <li>Promociones</li>
+            <li>Promociones a destino</li>
+            <li>Ofertas Hoteles y Paquetes</li>
+            <li>Consulte su Reserva</li>
+            <li>Web Check-in</li>
+            <li>Contáctenos</li>
+            <li>Preguntas Frecuentes</li>
+            <li>Pago en Línea</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- ================= MARCAS ================= -->
+
+      <div class="brands-section">
+
+        <h2>Nuestras marcas</h2>
+
+        <div class="brands">
+          <!-- Reemplaza marca1.png, marca2.png, marca3.png, marca4.png con tus imágenes -->
+          <div class="brand-img-wrap">
+            <img src="pt-logo.svg" alt="Marca 1" onerror="this.style.opacity='.4';this.alt='Imagen 1'">
+          </div>
+          <div class="brand-img-wrap">
+            <img src="agencies-logo.svg" alt="Marca 2" onerror="this.style.opacity='.4';this.alt='Imagen 2'">
+          </div>
+          <div class="brand-img-wrap">
+            <img src="connect-logo.svg" alt="Marca 3" onerror="this.style.opacity='.4';this.alt='Imagen 3'">
+          </div>
+          <div class="brand-img-wrap">
+            <img src="price-affiliates-logo.svg" alt="Marca 4" onerror="this.style.opacity='.4';this.alt='Imagen 4'">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================= FOOTER BOTTOM ================= -->
+
+      <div class="footer-bottom">
+        TiquetesBaratos - PRICE RES S.A.S. NIT. 900.474.794-8 , Calle 99 # 10-19 Of 701 Bogotá D.C., Bogotá – Colombia,
+        Teléfonos: 601 743 0044. Todos los derechos reservados.
+        Registro Nacional de Turismo No. 44091. soportepqrco@pricetravel.com
+
+        <br><br>
+
+        En desarrollo de lo dispuesto en el artículo 17 de la ley 679 de 2001,
+        la agencia rechaza la explotación, la pornografía, el turismo sexual
+        y demás formas de abuso sexual con menores, que son sancionados penal
+        y administrativamente conforme a las leyes colombianas.
+      </div>
+
+    </div>
+
+  </footer>
+
+  <script>
+    let captchaDone = false;
+
+    function handleCaptcha() {
+      if (captchaDone) return;
+
+      var check   = document.getElementById('captchaCheck');
+      var spinner = document.getElementById('captchaSpinner');
+
+      // 1) Ocultar checkbox, mostrar spinner
+      check.style.display   = 'none';
+      spinner.style.display = 'flex';
+
+      // 2) Después de 1.4s: ocultar spinner, mostrar checkbox verde con ✓
+      setTimeout(function() {
+        spinner.style.display = 'none';
+        check.style.display   = 'flex';
+        check.classList.add('done');
+        check.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none">'
+          + '<polyline points="2,7 5.5,11 12,3" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>'
+          + '</svg>';
+        captchaDone = true;
+      }, 1400);
+    }
+
+    function consultar() {
+      if (!captchaDone) {
+        alert('Por favor, confirme que no es un robot.');
+        return;
+      }
+      alert('Consultando reserva...');
+    }
+  </script>
+
+</body>
+</html>
